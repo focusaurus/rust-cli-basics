@@ -1,4 +1,4 @@
-use std::{env, fmt};
+use std::{convert, env, fmt, num};
 
 struct DivideError {
     message: String,
@@ -10,13 +10,22 @@ impl fmt::Debug for DivideError {
     }
 }
 
+impl convert::From<num::ParseIntError> for DivideError {
+    fn from(_pie: num::ParseIntError) -> Self {
+        DivideError {
+            message: "Please pass only numeric arguments".into(),
+        }
+    }
+}
+
 fn main() -> Result<(), DivideError> {
-    if env::args().len() < 3 {
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 3 {
         return Err(DivideError {
             message: "Need at least 2 numbers on the command line to divide".into(),
         });
     }
-    Err(DivideError {
-        message: "oops".into(),
-    })
+    let _dividend: i64 = args[1].parse()?;
+    let _divisor: i64 = args[2].parse()?;
+    Ok(())
 }

@@ -14,3 +14,7 @@
   * remove derive attribute
 1. Check command line argument length
   * use `std::env::args`
+1. Parse numbers
+  * Call `.parse()` to get `i64`
+  * Use `?` to get simple error handling
+  * Implement `std::convert::From` to allow automatic conversion from `std::num::ParseIntError` to `DivideError`
