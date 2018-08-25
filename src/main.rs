@@ -10,8 +10,8 @@ impl fmt::Debug for DivideError {
     }
 }
 
-impl convert::From<num::ParseIntError> for DivideError {
-    fn from(_pie: num::ParseIntError) -> Self {
+impl convert::From<num::ParseFloatError> for DivideError {
+    fn from(_pie: num::ParseFloatError) -> Self {
         DivideError {
             message: "Please pass only numeric arguments".into(),
         }
@@ -25,7 +25,14 @@ fn main() -> Result<(), DivideError> {
             message: "Need at least 2 numbers on the command line to divide".into(),
         });
     }
-    let _dividend: i64 = args[1].parse()?;
-    let _divisor: i64 = args[2].parse()?;
+    let dividend: f64 = args[1].parse()?;
+    let divisor: f64 = args[2].parse()?;
+    if divisor == 0f64 {
+        return Err(DivideError {
+            message: "Cannot divide by zero".into(),
+        });
+    }
+    let quotient: f64 = dividend / divisor;
+    println!("{}", quotient);
     Ok(())
 }

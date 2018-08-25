@@ -18,3 +18,5 @@
   * Call `.parse()` to get `i64`
   * Use `?` to get simple error handling
   * Implement `std::convert::From` to allow automatic conversion from `std::num::ParseIntError` to `DivideError`
+1. Do the division, print the quotient
+1. Handle zero divisor nicely
