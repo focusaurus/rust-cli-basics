@@ -28,6 +28,7 @@ RUN addgroup --gid \${GROUP_ID} \${USER} || true
 RUN adduser --disabled-password --gid \${GROUP_ID} --uid \${USER_ID} --gecos \${USER} \${USER} || true
 WORKDIR /opt
 ENV PATH=/usr/local/bin:/usr/local/cargo/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/target/debug
+ENV USER=\${USER}
 CMD ["bash"]
 EOF
 )
