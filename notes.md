@@ -12,3 +12,5 @@
   * `use std::fmt;`
   implement `fmt::Debug` trait's `fmt` method
   * remove derive attribute
+1. Check command line argument length
+  * use `std::env::args`
