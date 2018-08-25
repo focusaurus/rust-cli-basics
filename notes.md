@@ -7,4 +7,8 @@
   * Declare the struct
   * Update `main` type signature return
   * Return `Err(DivideError { message: "oops"}))`
-  * Implement debug via annotation
+  * Implement debug via `#[derive(Debug)]` attribute
+1. Implement custom Debug trait
+  * `use std::fmt;`
+  implement `fmt::Debug` trait's `fmt` method
+  * remove derive attribute
