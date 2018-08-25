@@ -20,3 +20,5 @@
   * Implement `std::convert::From` to allow automatic conversion from `std::num::ParseIntError` to `DivideError`
 1. Do the division, print the quotient
 1. Handle zero divisor nicely
+1. Add helper exit method
+  * Takes `message: String` returns `Result<(), DivideError>`

@@ -18,19 +18,19 @@ impl convert::From<num::ParseFloatError> for DivideError {
     }
 }
 
+fn exit(message: String) -> Result<(), DivideError> {
+    Err(DivideError { message })
+}
+
 fn main() -> Result<(), DivideError> {
     let args: Vec<String> = env::args().collect();
     if args.len() < 3 {
-        return Err(DivideError {
-            message: "Need at least 2 numbers on the command line to divide".into(),
-        });
+        return exit("Need at least 2 numbers on the command line to divide".into());
     }
     let dividend: f64 = args[1].parse()?;
     let divisor: f64 = args[2].parse()?;
     if divisor == 0f64 {
-        return Err(DivideError {
-            message: "Cannot divide by zero".into(),
-        });
+        return exit("Cannot divide by zero".into());
     }
     let quotient: f64 = dividend / divisor;
     println!("{}", quotient);
