@@ -1,6 +1,6 @@
 # Command line interface basics in rust
 
-1. `cargo init --bin .`
+1. `cargo init --name divide --bin .`
 1. change signature of main to return `Result<(), ()>`
   * return `Ok(())`
 1. Add a custom error struct
@@ -22,3 +22,8 @@
 1. Handle zero divisor nicely
 1. Add helper exit method
   * Takes `message: String` returns `Result<(), DivideError>`
+1. Move error code to separate module
+  * move to `error.rs`
+  * `mod error;`
+  * use `error::` namespace
+  * clean up `use`
