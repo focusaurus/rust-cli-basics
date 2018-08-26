@@ -18,8 +18,10 @@ impl convert::From<num::ParseFloatError> for DivideError {
     }
 }
 
-pub fn exit(message: &str) -> Result<(), DivideError> {
-    Err(DivideError {
-        message: message.into(),
-    })
+impl DivideError {
+    pub fn exit(message: &str) -> Result<(), DivideError> {
+        Err(DivideError {
+            message: message.into(),
+        })
+    }
 }
